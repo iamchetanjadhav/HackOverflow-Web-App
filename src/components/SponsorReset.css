@@ -1,0 +1,54 @@
+/* Reset for sponsors section to prevent conflicts */
+.sponsors section * {
+  box-sizing: border-box;
+}
+
+/* Unified container for all sponsor sections */
+.sponsor-grid-container,
+.gold-sponsors-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important;
+  align-items: center;
+  gap: 25px; /* Reduced from 30px */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Unified item styling for all sponsor items */
+.sponsor-grid-item,
+.gold-sponsor-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px; /* Reduced from 10px */
+  flex: 0 0 auto;
+  width: calc(33.333% - 50px); /* Adjusted for reduced gap */
+  max-width: 330px; /* Increased from 320px */
+  min-width: 290px; /* Increased from 280px */
+}
+
+/* Responsive adjustments for all sizes */
+@media (max-width: 1200px) {
+  .sponsor-grid-item,
+  .gold-sponsor-item {
+    width: calc(33.333% - 60px);
+  }
+}
+
+@media (max-width: 991px) {
+  .sponsor-grid-item,
+  .gold-sponsor-item {
+    width: calc(50% - 40px);
+  }
+}
+
+@media (max-width: 576px) {
+  .sponsor-grid-item,
+  .gold-sponsor-item {
+    width: calc(100% - 15px); /* Adjusted for reduced gap */
+    max-width: 310px; /* Increased from 300px */
+  }
+}

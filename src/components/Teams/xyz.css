@@ -59,18 +59,18 @@
 
 /* Default Design */
 .gfg-div {
-  font-size: 60px;
+  font-size: 60px; /* Restore original size for desktop */
 }
 @media screen and (min-width: 1024px) {
   .gfg-div {
-    font-size: 60px;
+    font-size: 60px; /* Restored original desktop size */
   }
 }
 
 /* For Tablet View */
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .gfg-div {
-    font-size: 4vw;
+    font-size: 40px; /* Adjusted for tablets */
   }
 }
 
@@ -91,7 +91,8 @@
 /* For Mobile Phones Portrait or Landscape View */
 @media screen and (max-device-width: 640px) {
   .gfg-div {
-    font-size: 4vw;
+    font-size: 24px; /* Increased from 18px for better visibility */
+    margin-right: 8px; /* Add right margin for separation from text */
   }
 }
 
@@ -113,6 +114,35 @@
 @media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
   .gfg-div {
     font-size: 4vw;
+  }
+}
+
+/* Typography improvements for responsiveness */
+.text-overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Container fixes for mobile */
+.social-text-container {
+  max-width: 200px; /* Increased for desktop */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+  .social-text-container {
+    max-width: 150px; /* Increased from 120px for more text */
+    line-height: 1.5; /* Improved line height for alignment */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .social-text-container {
+    max-width: 100px; /* Increased from 80px */
+    line-height: 1.5; /* Ensures link text properly aligns with icon */
   }
 }
 

@@ -1,86 +1,137 @@
 import "./FutureCityTheme.css";
-// SDGS IMPORT
-import FutureCityAsset from "./FutureCityAsset";
+import { motion, AnimatePresence } from "framer-motion";
+import { lazy, Suspense, useState, useEffect } from "react";
+import galaxyBg from "../../assets/img/galaxy.png";
+
+// Lazy load Lottie component
+const Lottie = lazy(() => import("lottie-react"));
 
 const FutureCityTheme = () => {
-  // const [click, setClick] = useState(false);
-  // const [hover, setHover] = useState(false);
-  return (
-    <div className="container pt-10" id="themes">
-      <h1
-        id="green-yellow"
-        className="text-center text-[45px] capitalize cursor-pointer"
-        style={{
-          fontFamily: "Poppins,sans-serif",
-          fontWeight: 700,
-          textAlign: "center",
-        }}
-      >
-        Theme - Dynamic World
-      </h1>
+  const [lottieData, setLottieData] = useState(null);
+  const [loadingError, setLoadingError] = useState(false);
 
-      <section className="pt-4 pb-10">
-        <div className="">
-          <div className="md:py-6 pb-8 px-2 lg:px-10 flex flex-col lg:flex-row justify-center items-center gap-8">
-            <div className="lg:w-1/2 xl:w-[50%] p-6 lg:py-12 flex flex-col items-center justify-center md:items-start">
-              <h2 className="about-us-h2 mb-4" id="blue-cyan">
-                The concept of Dynamic World by HackOverflow 3.0
-              </h2>
-              <p
-                className="about-us-p text-justify mb-4"
-                style={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: "400",
-                  fontSize: "1rem",
-                  margin: "0",
-                }}
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchLottieData = async () => {
+      try {
+        setLoadingError(false);
+        const response = await fetch(
+          'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/animations/greenglobe.json',
+          {
+            signal,
+            headers: {
+              'Cache-Control': 'max-age=3600',
+            }
+          }
+        );
+        
+        if (!response.ok) throw new Error('Failed to fetch animation');
+        
+        const data = await response.json();
+        setLottieData(data);
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          console.error('Error loading Lottie animation:', error);
+          setLoadingError(true);
+          
+          // Fallback to local static JSON if CDN fails
+          try {
+            const staticData = await import('../../assets/Lotties/greenglobe.json');
+            setLottieData(staticData.default);
+            setLoadingError(false);
+          } catch (fallbackError) {
+            console.error('Failed to load fallback animation:', fallbackError);
+          }
+        }
+      }
+    };
+
+    fetchLottieData();
+
+    return () => controller.abort();
+  }, []);
+
+  return (
+    <div className="theme-container" id="themes" style={{ backgroundImage: `url(${galaxyBg})` }}>
+      <div className="theme-wrapper">
+        <AnimatePresence>
+          <motion.div 
+            className="header-with-globe"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            layout
+          >
+            <div className="theme-header">
+              <motion.h1 
+                className="theme-title"
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5 }}
               >
-                  Welcome to the reign of invention, where your code transforms the world! HackOverflow 3.0
-                  is proud to present this year’s
-                  <span id="blue-cyan">
-                  {" "}
-                  <a
-                    href="https://www.instagram.com/hackoverflow.tech/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="cursor-pointer"
-                  >
-                    Theme: Dynamic World.
-                  </a>
-                </span>{" "}
-                  The Dynamic World demands thinkers, problem-solvers,
-                  and disruptors who can break boundaries and create real-world impact. If you have the code, we have the platform!
-                  Join us and turn your skills into ground breaking solutions that will transform the world.
+                <span>Theme</span>
+                <span>-</span>
+                <span id="green-yellow">Dynamic World</span>
+              </motion.h1>
+            </div>
+
+            <motion.div 
+              className="globe-container"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Suspense fallback={<div className="globe-placeholder" />}>
+                {!loadingError && lottieData ? (
+                  <Lottie 
+                    animationData={lottieData}
+                    loop={true}
+                    className="globe-animation"
+                    rendererSettings={{
+                      preserveAspectRatio: "xMidYMid slice",
+                      progressiveLoad: true,
+                    }}
+                    onError={() => setLoadingError(true)}
+                  />
+                ) : (
+                  <div className="globe-error">
+                    <div className="globe-placeholder" />
+                  </div>
+                )}
+              </Suspense>
+            </motion.div>
+          </motion.div>
+
+          <motion.div 
+            className="theme-content"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            layout
+          >
+            <h2 className="theme-subtitle" id="blue-cyan">
+              The concept of Dynamic World by HackOverflow 3.0
+            </h2>
+            <div className="theme-description">
+              <p>
+                Welcome to the reign of invention, where your code transforms the world! HackOverflow 3.0
+                is proud to present this year's{" "}
+                <span id="blue-cyan" className="highlight">
+                  Theme: Dynamic World
+                </span>
+                . The Dynamic World demands thinkers, problem-solvers,
+                and disruptors who can break boundaries and create real-world impact.
               </p>
-              <p
-                className="about-us-p text-justify"
-                style={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: "400",
-                  fontSize: "1rem",
-                  margin: "0",
-                }}
-              >
+              <p>
                 For the <span id="orange-pink">HackOverflow 3.0</span>, your mission is to unleash your brilliant ideas to develop projects that revolutionize urban living,
-                  transforming how we live, work, and interact with our environments.
-                  From transportation and energy systems to healthcare and safety, the possibilities are limitless.
-                  Get ready! as the world is on the brink of a new era, and your ideas are the key to shaping tomorrow!
+                transforming how we live, work, and interact with our environments.
               </p>
             </div>
-            <div className="lg:w-1/2">
-              <a
-                href="https://www.instagram.com/hackoverflow.tech/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div className="CommunityImage object-cover rounded-md">
-                  <FutureCityAsset />
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

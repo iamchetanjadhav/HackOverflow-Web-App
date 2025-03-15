@@ -50,7 +50,7 @@ const InstagramReelsCards = () => {
     <section className="instagram-section">
       <div className="section-content">
         <h1 className="section-title" id="green-yellow">
-          Latest Social Posts
+          Our Social Posts
         </h1>
 
         <div className="cards-container">

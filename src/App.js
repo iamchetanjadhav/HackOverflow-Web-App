@@ -10,6 +10,7 @@ import PreLoader from "./components/PreLoader/PreLoader";
 import ScrollToTop from "react-scroll-to-top";
 import CollegeClub from './components/CollegeClub/CollegeClub';
 import { GlobeNewComponent } from './components/GlobeNewComponent/GlobeNewComponent';
+import FutureCityTheme from './components/FutureCityTheme/FutureCityTheme';
 import { Schedule } from './components/Schedule/Schedule';
 import AppTeam from './components/AppTeam/AppTeam';
 import Sponsors from './components/Sponsors';
@@ -20,21 +21,31 @@ import Footer from './components/Footer';
 import MobileNavbar from './components/MobileNavbar/MobileNavbar';
 import GalleryLayout from './components/GalleryLayout';
 
-// Optimized component wrapper with intersection observer
-const OptimizedComponent = ({ children, id }) => {
+// Optimized component wrapper with improved loading strategy
+const OptimizedComponent = ({ children, id, priority = false }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
+    // If marked as priority, load immediately regardless of visibility
+    if (priority) {
+      setIsVisible(true);
+      setHasLoaded(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Component is now visible - set flags to render it
           setIsVisible(true);
+          setHasLoaded(true);
           observer.disconnect();
         }
       },
       {
         threshold: 0.1,
-        rootMargin: '50px'
+        rootMargin: '100px 0px' // Preload a bit earlier (100px before component enters viewport)
       }
     );
 
@@ -42,11 +53,11 @@ const OptimizedComponent = ({ children, id }) => {
     if (element) observer.observe(element);
 
     return () => observer.disconnect();
-  }, [id]);
+  }, [id, priority]);
 
   return (
     <div id={id} style={{ minHeight: '10px' }}>
-      {isVisible && children}
+      {(isVisible || hasLoaded) && children}
     </div>
   );
 };
@@ -151,8 +162,13 @@ function App() {
                   <GlobeNewComponent />
                 </OptimizedComponent>
 
-                <OptimizedComponent id="schedule">
+                {/* Move Schedule component before Theme component */}
+                <OptimizedComponent id="schedule" priority={true}>
                   <Schedule />
+                </OptimizedComponent>
+
+                <OptimizedComponent id="themes">
+                  <FutureCityTheme />
                 </OptimizedComponent>
 
                 <OptimizedComponent id="appteam">

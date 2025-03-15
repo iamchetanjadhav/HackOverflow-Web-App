@@ -34,7 +34,7 @@ const Background = (props) => {
             className="button-86"
             onClick={handleRegisterButtonClick}
           >
-            Register Here!
+            Registrations Closed
           </button>
         </div>
       </div>

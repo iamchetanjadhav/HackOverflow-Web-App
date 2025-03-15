@@ -1,22 +1,17 @@
 import React from 'react';
 import './MediumSponsorsCard.css';
 
-
-function MediumSponsorsCard({ title, image, dataAos, weblink }) {
-
-
+function MediumSponsorsCard({ title, image, dataAos, weblink, SubSponsorcategory }) {
     return (
-        <div className="flex flex-col items-center justify-center" data-aos={dataAos}>
-            <div
-                className={"mediumcard"}
-            >
-                <a href={weblink} target="_blank" rel="noreferrer">
+        <div className="sponsor-card-container" data-aos={dataAos}>
+            <div className="mediumcard">
+                <a href={weblink} target="_blank" rel="noreferrer" className="sponsor-link">
                     <img
                         src={image}
-                        alt={"event card"}
+                        alt={title || "Sponsor"}
+                        className="sponsor-img"
                     />
                 </a>
-
             </div>
         </div>
     )

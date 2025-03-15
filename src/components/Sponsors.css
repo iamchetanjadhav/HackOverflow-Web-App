@@ -7,12 +7,112 @@
 .sponsors-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  justify-items: center;
+  gap: 3rem;
+  justify-content: center;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* Improved grid container with better centering and spacing */
+.sponsor-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.sponsor-grid-item {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Desktop view: 3 cards per row */
+@media (min-width: 992px) {
+  .sponsor-grid-container {
+    padding: 0 30px;
+  }
+}
+
+/* Tablet view: 2 cards per row */
+@media (max-width: 991px) and (min-width: 576px) {
+  .sponsor-grid-item {
+    width: 50%;
+  }
+}
+
+/* Mobile view: 1 card per row */
+@media (max-width: 575px) {
+  .sponsor-grid-item {
+    width: 100%;
+    padding: 10px 0;
+  }
+  
+  .sponsor-grid-container {
+    padding: 0 10px;
+  }
+}
+
+/* Make sure a row has max 3 cards */
+@media (min-width: 1201px) {
+  .sponsor-grid-container {
+    padding: 0 40px;
+  }
+  
+  .sponsor-grid-container::after {
+    content: "";
+    flex: 0 0 calc(33.333% - 30px);
+    max-width: 320px;
+    min-width: 250px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .sponsor-grid-item {
+    width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsor-grid-container {
+    gap: 20px;
+  }
+  
+  .sponsor-grid-item {
+    width: calc(50% - 20px);
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsor-grid-item {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+.sponsor-card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Ensure content inside cards is centered */
+}
+
+/* Add animation for hover effect */
+.sponsor-card-wrapper:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
 
 .sponsor-card {
@@ -67,4 +167,56 @@
     max-width: 200px;
     height: 120px;
   }
-} 
+}
+
+/* Animation improvements */
+.sponsor-grid-item .mediumcard,
+.gold-sponsor-item .mediumcard {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+}
+
+.sponsor-grid-item:hover .mediumcard,
+.gold-sponsor-item:hover .mediumcard {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(91, 143, 129, 0.3);
+}
+
+/* Specific layout for Gold sponsors and other categories that need a 3x1 grid */
+.gold-sponsors-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.gold-sponsor-item {
+  flex: 1;
+  max-width: 400px; /* Increased from 320px */
+  min-width: 300px; /* Increased from 250px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments for Gold sponsors */
+@media (max-width: 991px) {
+  .gold-sponsors-container {
+    flex-wrap: wrap;
+  }
+  
+  .gold-sponsor-item {
+    flex: 0 0 45%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .gold-sponsor-item {
+    flex: 0 0 100%;
+  }
+}

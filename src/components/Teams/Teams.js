@@ -23,16 +23,11 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 // Import Swiper styles
 import "swiper/css";
 import {
-  // FaFacebook,
-  FaDiscord,
-  FaTwitter,
   FaGithub,
-  // FaYoutube,
   FaInstagram,
+  FaYoutube,
   FaLinkedin,
 } from "react-icons/fa";
-// import { FaXTwitter } from "react-icons/fa6";
-import XIcon from "@mui/icons-material/X";
 //import css
 import "./AppTeam.css";
 import "./Animation.css";
@@ -150,54 +145,43 @@ const Img = (src) => {
 
 const CurrentTeamNav = (props) => {
   const allPosArray = props.posArrayTeamLeads;
-  const [selectedPosArray, setSelectedPosArray] = useState(0);
+  const [currentGroup, setCurrentGroup] = useState(0); // 0 for first three, 1 for fourth
   const [posArrayTeamLeads, setPosArray] = useState(
-    // get the first 5 elements
-    allPosArray.slice(selectedPosArray, 5)
+    allPosArray.slice(0, 3) // Initially show first 3
   );
-  useEffect(() => {
-    console.log("posArrayTeamLeads", posArrayTeamLeads);
-    const key = posArrayTeamLeads[selectedPosTeamLeads]?.key;
-    console.log("key", key);
-    props.parentSetSelectedPos(key - 1);
-  }, [posArrayTeamLeads]);
 
-  const [selectedPosTeamLeads, setSelectedPosTeamLeads] = useState(
-    Math.floor((posArrayTeamLeads.length - 1) / 2)
-  );
+  useEffect(() => {
+    const key = currentGroup === 0 
+      ? posArrayTeamLeads[selectedPosTeamLeads]?.key
+      : "4"; // When showing 4th mentor
+    props.parentSetSelectedPos(parseInt(key) - 1);
+  }, [posArrayTeamLeads, currentGroup]);
+
+  const [selectedPosTeamLeads, setSelectedPosTeamLeads] = useState(1);
 
   return (
     <HStack>
-      {allPosArray.length > 5 && (
+      {currentGroup === 1 && (
         <Box
           w={{ base: "20px", md: "40px" }}
           h={{ base: "20px", md: "40px" }}
-          bg={selectedPosArray > 0 ? "black" : "blackAlpha.300"}
+          bg="black"
           borderRadius="50%"
           display="flex"
           alignItems="center"
           justifyContent="center"
           cursor="pointer"
-          // border={'4px blue solid'}
           ml={-10}
           onClick={() => {
-            // set the new array
-            //selectedPosArray is the index of the first element in the array
-            // selectedPosArray >= 0 and selectedPosArray < allPosArray.length-5
-            if (selectedPosArray - 5 >= 0) {
-              setSelectedPosArray(selectedPosArray - 5);
-              setPosArray(
-                allPosArray.slice(selectedPosArray - 5, selectedPosArray)
-              );
-            } else {
-              setSelectedPosArray(0);
-              setPosArray(allPosArray.slice(0, 5));
-            }
+            setCurrentGroup(0);
+            setPosArray(allPosArray.slice(0, 3));
+            setSelectedPosTeamLeads(1);
           }}
         >
           <AiOutlineLeft color="white" />
         </Box>
       )}
+
       <TeamNav
         posArrayTeamLeads={posArrayTeamLeads}
         selectedPosTeamLeads={selectedPosTeamLeads}
@@ -205,16 +189,11 @@ const CurrentTeamNav = (props) => {
         setPosArray={setPosArray}
       />
 
-      {allPosArray.length > 5 && (
+      {currentGroup === 0 && allPosArray.length > 3 && (
         <Box
           w={{ base: "20px", md: "40px" }}
           h={{ base: "20px", md: "40px" }}
-          bg={
-            selectedPosArray < allPosArray.length - 5
-              ? "black"
-              : "blackAlpha.300"
-          }
-          // border="4px green solid"
+          bg="black"
           borderRadius="50%"
           display="flex"
           alignItems="center"
@@ -222,20 +201,9 @@ const CurrentTeamNav = (props) => {
           cursor="pointer"
           ml={120}
           onClick={() => {
-            // set the new array
-            //selectedPosArray is the index of the first element in the array
-            // selectedPosArray >= 0 and selectedPosArray < allPosArray.length-5
-            if (selectedPosArray + 10 < allPosArray.length) {
-              setSelectedPosArray(selectedPosArray + 5);
-              setPosArray(
-                allPosArray.slice(selectedPosArray + 5, selectedPosArray + 10)
-              );
-            } else {
-              setSelectedPosArray(allPosArray.length - 5);
-              setPosArray(
-                allPosArray.slice(allPosArray.length - 5, allPosArray.length)
-              );
-            }
+            setCurrentGroup(1);
+            setPosArray([allPosArray[3]]); // Show only the 4th mentor
+            setSelectedPosTeamLeads(0);
           }}
         >
           <AiOutlineRight color="white" />
@@ -249,315 +217,199 @@ function Teampage() {
   // MENTORS SECTION .......................////////////////////////////
   const Mentors = [
     {
-      image: "/reveal1.png",
-      image1: "/reveal1.png",
-      id: "😊",
-      xtwitter: "https://hackoverflow3.tech/",
-      xtwitterhandle: "@coming_soon",
-      insta: "https://hackoverflow3.tech/",
-      instahandle: "@coming_soon",
-      linkedin: "https://hackoverflow3.tech/",
-      Linkedinhandle: "@coming_soon",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/sahil%20gaikwad.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/sahil%20gaikwad.png",
+      id: "Sahil",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
-      name: "Web Mentor",
-      // content:
-      // "I favor a systematic approach involving planning, organizing, implementing, and monitoring, blending science and art to achieve set goals.",
+      instagram: "https://www.instagram.com/sahil_gaikwad.__/",
+      instagramhandle: "@sahil_gaikwad.__",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://www.linkedin.com/in/sahil-gaikwad-b3a980223/",
+      linkedinhandle: "@sahil-gaikwad",
+      name: "App Mentor",
       content:
-        "I'll soon be swooping in to unveil my mentorship in the epic realm of HackOverflow 3.0! 🎉",
+        "Hey everyone! 👋 I'm Sahil Gaikwad, a QA Engineer at Nasdaq & tech enthusiast 🚀. Passionate about Android, iOS, full-stack dev & data science! Excited to mentor at Hackoverflow 3.0—let’s build something awesome! 💡🔥",
       key: "1",
     },
     {
-      image: "/reveal2.png",
-      image1: "/reveal2.png",
-      id: "😊",
-      xtwitter: "https://hackoverflow3.tech/",
-      xtwitterhandle: "@coming_soon",
-      insta: "https://hackoverflow3.tech/",
-      instahandle: "@coming_soon",
-      linkedin: "https://hackoverflow3.tech/",
-      Linkedinhandle: "@coming_soon",
-      github: "https://hackoverflow3.tech/",
-      githubhandle: "@coming_soon",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
-      name: "App Mentor",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/swastik_patil.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/swastik_patil.png",
+      id: "Swastik",
+      github: "https://github.com/Swastik-Patil",
+      githubhandle: "@Swastik-Patil",
+      instagram: "https://www.instagram.com/swastikkpatil/",
+      instagramhandle: "@swastikkpatil",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://www.linkedin.com/in/swastikpatil",
+      linkedinhandle: "@swastikpatil",
+      name: "Web Mentor",
       content:
-        " The countdown is on as I prepare to unleash my mentorship powers in the electrifying world of HackOverflow 3.0! 🎩✨ Get ready to unlock your full coding potential and embark on a journey of innovation and discovery.",
+        "Hey everyone! 👋 I'm Swastik Patil, a software developer & GDG PHCET Technical Head 💻. Excited to mentor at Hackoverflow 3.0 🚀—let’s learn, build, and innovate together! 🔥",
       key: "2",
     },
     {
-      image: "/reveal3.png",
-      image1: "/reveal3.png",
-      id: "😊",
-      xtwitter: "https://hackoverflow3.tech/",
-      xtwitterhandle: "@coming_soon",
-      insta: "https://hackoverflow3.tech/",
-      instahandle: "@coming_soon",
-      linkedin: "https://hackoverflow3.tech/",
-      Linkedinhandle: "@coming_soon",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/prathamesh%20pandey.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/prathamesh%20pandey.png",
+      id: "Prathamesh",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
-      name: "Cloud Mentor",
+      instagram: "https://www.instagram.com/prathmesh.pandey.129/",
+      instagramhandle: "@prathmesh.pandey.129",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://www.linkedin.com/in/prathmeshpandey9/",
+      linkedinhandle: "@prathmeshpandey9",
+      name: "H.O Founder",
       content:
-        "🚀 Calling all aspiring coders! 📣 Prepare to be inspired and empowered as I gear up to reveal myself as your guide and mentor in the epic saga of HackOverflow 3.0! 🌟",
+        "Hey everyone! 👋 I'm Prathmesh Pandey, SIH'22 Winner & Founder of Hackoverflow.tech 🚀. Excited to mentor at Hackoverflow 3.0! 🎉 Let’s innovate and connect! 💡",
       key: "3",
     },
+    {
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/yash%20mahajan.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/yash%20mahajan.png",
+      id: "Yash",
+      github: "https://hackoverflow3.tech/",
+      githubhandle: "@coming_soon",
+      instagram: "https://hackoverflow3.tech/",
+      instagramhandle: "@coming_soon",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://www.linkedin.com/in/yash-mahajan-90b0b5219/",
+      linkedinhandle: "@yash-mahajan",
+      name: "Cloud Mentor",
+      content:
+        "Hey everyone! 👋 I’m Yash Mahajan, Sr. Executive at Godrej Infotech Ltd. Passionate about tech & innovation, I love sharing insights and guiding aspiring minds. Super excited to mentor at Hackoverflow 3.0—let’s learn, build, and innovate together! 🚀🔥",
+      key: "4",
+    },
+    // {
+    //   image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/reveal/reveal1.png",
+    //   image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/reveal/reveal1.png",
+    //   id: "😊",
+    //   github: "https://hackoverflow3.tech/",
+    //   githubhandle: "@coming_soon",
+    //   instagram: "https://hackoverflow3.tech/",
+    //   instagramhandle: "@coming_soon",
+    //   youtube: "https://hackoverflow3.tech/",
+    //   youtubehandle: "@coming_soon",
+    //   linkedin: "https://hackoverflow3.tech/",
+    //   linkedinhandle: "@coming_soon",
+    //   name: "Cloud Mentor",
+    //   content:
+    //     "🚀 Calling all aspiring coders! 📣 Prepare to be inspired and empowered as I gear up to reveal myself as your guide and mentor in the epic saga of HackOverflow 3.0! 🌟",
+    //   key: "5",
+    // },
   ];
 
   // JUDGES ARRAY.................................//////////////////////////////
   const TeamLeads = [
     {
-      image: "/vaibhav.png",
-      image1: "/vaibhav.png",
-      id: "Vaibhav Malpani",
-      xtwitter: "https://twitter.com/IVaibhavMalpani",
-      xtwitterhandle: "@IVaibhavMalpani",
-      // insta: "https://hackoverflow3.tech/",
-      // instahandle: "@coming_soon",
-      linkedin: "https://www.linkedin.com/in/ivaibhavmalpani/",
-      Linkedinhandle: "ivaibhavmalpani",
-      github: "https://github.com/vaibhav-malpani/",
-      githubhandle: "vaibhav-malpani",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
-      // name: "Coming Soon",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nikita%20gandhi.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nikita%20gandhi.png",
+      id: "Nikita Gandhi",
+      github: "https://hackoverflow3.tech/",
+      githubhandle: "@coming_soon",
+      instagram: "https://hackoverflow3.tech/",
+      instagramhandle: "@coming_soon",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://www.linkedin.com/in/nikita-gandhi01/",
+      linkedinhandle: "@nikita-gandhi01",
       name: "Judge 1",
       content:
-        "🔍 Attention all HackOverflow 3.0 contenders! 🚀 As one of the vigilant judges, I'm discreetly analyzing your coding ingenuity💻.",
+        "Hey everyone! 👋 I’m Nikita Gandhi, Technical Program Manager at Google. Excited to judge Hackoverflow 3.0 and witness amazing innovation! 🚀💡",
       key: "1",
     },
     {
-      image: "/sumit.png",
-      image1: "/sumit.png",
-      id: "Sumit Kumar",
-      // insta: "https://www.linkedin.com/in/nikita-gandhi01/",
-      // instahandle: "@sanatbhatia",
-      xtwitter: "https://twitter.com/SumitKu67694538",
-      xtwitterhandle: "@SumitKu67694538",
-      linkedin: "https://www.linkedin.com/in/sumit-kumar-54068b141/",
-      Linkedinhandle: "sumit-kumar-54068b141",
-      github: "https://github.com/sumit276",
-      githubhandle: "@sumit276",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/manav%20gupta.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/manav%20gupta.png",
+      id: "Manav Gupta",
+      github: "https://hackoverflow3.tech/",
+      githubhandle: "@coming_soon",
+      instagram: "https://www.instagram.com/tensor._.boy/",
+      instagramhandle: "@tensor._.boy",
+      youtube: "https://www.youtube.com/@tensorboy",
+      youtubehandle: "@tensorboy",
+      linkedin: "https://www.linkedin.com/in/--manav-gupta--/",
+      linkedinhandle: "@--manav-gupta--",
       name: "Judge 2",
       content:
-        "👩‍⚖️ Welcome, participants. As your judge, I'm eager to see your creativity unleashed💻🕵️‍♀️",
+        "Hey innovators! 🚀 I'm Manav Gupta, an AI engineer & 3x Kaggle Expert, passionate about ML & LLMs. Pumped to judge Hackoverflow 3.0 and witness some next-level tech! 🔥🤖",
       key: "2",
     },
-    // {
-    //   image: "/anjani.png",
-    //   image1: "/anjani.png",
-    //   id: "Anjani Kumar Thakur",
-    //   // insta: "https://www.linkedin.com/in/nikita-gandhi01/",
-    //   // instahandle: "@sanatbhatia",
-    //   xtwitter: "https://twitter.com/lifeofanjkt",
-    //   xtwitterhandle: "@lifeofanjkt",
-    //   linkedin: "https://www.linkedin.com/in/anjkt/",
-    //   Linkedinhandle: "anjkt",
-    //   github: "https://github.com/anjkt",
-    //   githubhandle: "@anjkt",
-    //   discord: "https://hackoverflow3.tech/",
-    //   discordhandle: "@coming_soon",
-    //   name: "Judge 2",
-    //   content:
-    //     "🧐 As one of the discerning judges for HackOverflow 3.0, I'm discreetly evaluating your coding finesse💻🕵️‍♀️",
-    //   key: "2",
-    // },
     {
-      image: "/nitin.png",
-      image1: "/nitin.png",
-      id: "Nitin Tiwari",
-      xtwitter: "https://twitter.com/NSTiwari21",
-      xtwitterhandle: "@NSTiwari21",
-      // insta: "https://hackoverflow3.tech/",
-      // instahandle: "@coming_soon",
-      linkedin: "https://www.linkedin.com/in/tiwari-nitin/",
-      Linkedinhandle: "tiwari-nitin",
-      github: "https://github.com/NSTiwari",
-      githubhandle: "@NSTiwari",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nirav%20sanghavi.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nirav%20sanghavi.png",
+      id: "Nirav Sanghavi",
+      github: "https://hackoverflow3.tech/",
+      githubhandle: "@coming_soon",
+      instagram: "https://hackoverflow3.tech/",
+      instagramhandle: "@coming_soon",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://www.linkedin.com/in/nirav-sanghavi/",
+      linkedinhandle: "@nirav-sanghavi",
       name: "Judge 3",
       content:
-        "👨‍⚖️Attention all participants!! As one of your judges, I'm here to assess your performance with a discerning eye🌟.",
+        "Hey everyone! 👋 I’m Nirav Sanghavi, Engineering Director at Sophos & your Judge ⚖️! With 20+ years in Java, Agile & Cloud Security ☁️, I’m excited to see your innovations! 🚀",
       key: "3",
     },
-    // {
-    //   image: "/sumit.png",
-    //   image1: "/sumit.png",
-    //   id: "Sumit Kumar",
-    //   // insta: "https://www.linkedin.com/in/nikita-gandhi01/",
-    //   // instahandle: "@sanatbhatia",
-    //   xtwitter: "https://twitter.com/SumitKu67694538",
-    //   xtwitterhandle: "@SumitKu67694538",
-    //   linkedin: "https://www.linkedin.com/in/sumit-kumar-54068b141/",
-    //   Linkedinhandle: "sumit-kumar-54068b141",
-    //   github: "https://github.com/sumit276",
-    //   githubhandle: "@sumit276",
-    //   discord: "https://hackoverflow3.tech/",
-    //   discordhandle: "@coming_soon",
-    //   name: "Judge 4",
-    //   content:
-    //     "👩‍⚖️ Welcome, participants. As your judge, I'm eager to see your creativity unleashed💻🕵️‍♀️",
-    //   key: "4",
-    // },
-    // {
-    //   image: "/sumit.png",
-    //   image1: "/sumit.png",
-    //   id: "Sumit Kumar",
-    //   xtwitter: "https://twitter.com/SumitKu67694538",
-    //   xtwitterhandle: "@SumitKu67694538",
-    //   // insta: "https://hackoverflow3.tech/",
-    //   // instahandle: "@coming_soon",
-    //   linkedin: "https://www.linkedin.com/in/sumit-kumar-54068b141/",
-    //   Linkedinhandle: "sumit-kumar-54068b141",
-    //   github: "https://github.com/sumit276",
-    //   githubhandle: "@sumit276",
-    //   discord: "https://hackoverflow3.tech/",
-    //   discordhandle: "@coming_soon",
-    //   name: "Judge 4",
-    //   content:
-    //     "👩‍⚖️ Welcome, participants. As your judge, I'm eager to see your creativity unleashed💻🕵️‍♀️",
-    //   key: "4",
-    // },
   ];
 
   // GUESTS ARRAY STARTS HERE..................
   const CoreTeam = [
     {
-      image: "/nikita.png",
-      image1: "/nikita.png",
-      id: "Nikita Gandhi",
-      // insta: "https://www.linkedin.com/in/nikita-gandhi01/",
-      // instahandle: "@sanatbhatia",
-      xtwitter: "https://twitter.com/Nikkitagandhi",
-      xtwitterhandle: "Nikkitagandhi",
-      linkedin: "https://www.linkedin.com/in/nikita-gandhi01/",
-      Linkedinhandle: "nikita-gandhi01",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/rohini%20bhosale.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/rohini%20bhosale.png",
+      id: "Rohini Bhosale",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
-      discord: "https://discordapp.com/users/nikita1494",
-      discordhandle: "nikita1494",
+      instagram: "https://hackoverflow3.tech/",
+      instagramhandle: "@coming_soon",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://www.linkedin.com/in/rohini-bhosale-3b78785a/",
+      linkedinhandle: "@rohini-bhosale",
       name: "Guest 1",
       content:
-        "👨‍⚖️ As a Guest for HackOverflow 3.0, I'm silently appraising your innovation and execution along with the flawless implementation🚀.",
+        "Hey everyone! 🎤 Excited to join as a guest at H.O 3.0! As an Assistant Professor at DJSCE & ex-HOD of Computer Engg at PHCET, I can't wait to share my insights with you all! See you there! 🚀",
       key: "1",
     },
     {
-      image: "/anjani.png",
-      image1: "/anjani.png",
-      id: "Anjani Kumar Thakur",
-      // insta: "https://www.linkedin.com/in/nikita-gandhi01/",
-      // instahandle: "@sanatbhatia",
-      xtwitter: "https://twitter.com/lifeofanjkt",
-      xtwitterhandle: "@lifeofanjkt",
-      linkedin: "https://www.linkedin.com/in/anjkt/",
-      Linkedinhandle: "anjkt",
-      github: "https://github.com/anjkt",
-      githubhandle: "@anjkt",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/shridhar%20mankar.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/shridhar%20mankar.png",
+      id: "Shridhar Mankar",
+      github: "https://hackoverflow3.tech/",
+      githubhandle: "@coming_soon",
+      instagram: "https://www.instagram.com/5minutesengineering/",
+      instagramhandle: "@5minutesengineering",
+      youtube: "https://www.youtube.com/@5minutesengineering",
+      youtubehandle: "@5minutesengineering",
+      linkedin: "https://www.linkedin.com/in/shridhar-mankar",
+      linkedinhandle: "@shridhar-mankar",
       name: "Guest 2",
       content:
-        "🧐 As one of the discerning guest for HackOverflow 3.0, I'm discreetly evaluating your coding finesse💻🕵️‍♀️",
+        "Hey everyone! 🚀 I, Shridhar Mankar, am super excited to be a guest at H.O 3.0! With 730K+ subscribers on 5 Minute Engineering, I love making tech simple & fun! Can’t wait to meet you all—let’s make this event amazing! 🎤🔥",
       key: "2",
     },
     {
-      image: "/reveal6.png",
-      image1: "/reveal6.png",
+      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/reveal/reveal1.png",
+      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/reveal/reveal1.png",
       id: "😊",
-      xtwitter: "https://hackoverflow3.tech/",
-      xtwitterhandle: "@coming_soon",
-      insta: "https://hackoverflow3.tech/",
-      instahandle: "@coming_soon",
-      linkedin: "https://hackoverflow3.tech/",
-      Linkedinhandle: "@coming_soon",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
-      discord: "https://hackoverflow3.tech/",
-      discordhandle: "@coming_soon",
+      instagram: "https://hackoverflow3.tech/",
+      instagramhandle: "@coming_soon",
+      youtube: "https://hackoverflow3.tech/",
+      youtubehandle: "@coming_soon",
+      linkedin: "https://hackoverflow3.tech/",
+      linkedinhandle: "@coming_soon",
       name: "Guest 3",
       content: "Crafting Digital Excellence, One Line of Code at a Time.",
       key: "3",
     },
-    // {
-    //   image: "/reveal7.png",
-    //   image1: "/reveal7.png",
-    //   id: "😊",
-    //   xtwitter: "https://hackoverflow3.tech/",
-    //   xtwitterhandle: "@coming_soon",
-    //   insta: "https://hackoverflow3.tech/",
-    //   instahandle: "@coming_soon",
-    //   linkedin: "https://hackoverflow3.tech/",
-    //   Linkedinhandle: "@coming_soon",
-    //   github: "https://hackoverflow3.tech/",
-    //   githubhandle: "@coming_soon",
-    //   discord: "https://hackoverflow3.tech/",
-    //   discordhandle: "@coming_soon",
-    //   name: "Dev Head",
-    //   content: "Crafting Digital Excellence, One Line of Code at a Time.",
-    //   key: "3",
-    // },
-    // {
-    //   image: "/reveal8.png",
-    //   image1: "/reveal8.png",
-    //   id: "😊",
-    //   xtwitter: "https://hackoverflow3.tech/",
-    //   xtwitterhandle: "@coming_soon",
-    //   insta: "https://hackoverflow3.tech/",
-    //   instahandle: "@coming_soon",
-    //   linkedin: "https://hackoverflow3.tech/",
-    //   Linkedinhandle: "@coming_soon",
-    //   github: "https://hackoverflow3.tech/",
-    //   githubhandle: "@coming_soon",
-    //   discord: "https://hackoverflow3.tech/",
-    //   discordhandle: "@coming_soon",
-    //   content: "Crafting Digital Excellence, One Line of Code at a Time.",
-    //   name: "Media Head",
-    //   key: "4",
-    // },
-    // {
-    //   image: "/reveal9.png",
-    //   image1: "/reveal9.png",
-    //   id: "😊",
-    //   xtwitter: "https://hackoverflow3.tech/",
-    //   xtwitterhandle: "@coming_soon",
-    //   insta: "https://hackoverflow3.tech/",
-    //   instahandle: "@coming_soon",
-    //   linkedin: "https://hackoverflow3.tech/",
-    //   Linkedinhandle: "@coming_soon",
-    //   github: "https://hackoverflow3.tech/",
-    //   githubhandle: "@coming_soon",
-    //   discord: "https://hackoverflow3.tech/",
-    //   discordhandle: "@coming_soon",
-    //   content: "Crafting Digital Excellence, One Line of Code at a Time.",
-    //   name: "Creative Head",
-    //   key: "5",
-    // },
-    // {
-    //   image: "/reveal10.png",
-    //   image1: "/reveal10.png",
-    //   id: "😊",
-    //   xtwitter: "https://hackoverflow3.tech/",
-    //   xtwitterhandle: "@coming_soon",
-    //   insta: "https://hackoverflow3.tech/",
-    //   instahandle: "@coming_soon",
-    //   linkedin: "https://hackoverflow3.tech/",
-    //   Linkedinhandle: "@coming_soon",
-    //   github: "https://hackoverflow3.tech/",
-    //   githubhandle: "@coming_soon",
-    //   discord: "https://hackoverflow3.tech/",
-    //   discordhandle: "@coming_soon",
-    //   content: "Crafting Digital Excellence, One Line of Code at a Time.",
-    //   name: "Graphics Head",
-    //   key: "6",
-    // },
   ];
 
   const loadImages = () => {
@@ -607,19 +459,15 @@ function Teampage() {
     <ChakraProvider>
       <>
         <Box
-          //   bgColor={"#111111"}
           minH="100%"
           alignItems={"center"}
           w="100%"
           justifyContent={"center"}
           display={"flex"}
-          //   paddingTop={"4rem"}
           className=""
         >
           <Box m={0} w="100%">
-            {/* <Nav /> */}
             <NavBar />
-            {/* <Head /> */}
             <VStack
               justify={"center"}
               align={"center"}
@@ -628,282 +476,514 @@ function Teampage() {
               flexGrow={1}
               py={{ base: "5", md: "10" }}
               pb={{ base: "5", md: "20" }}
-              //fill remaining height
             >
               <Flex justify={"center"} align={"center"}>
+                {/* For desktop view */}
                 <Box
+                  display={{ base: "none", md: "block" }}
                   justifySelf={"center"}
                   alignContent={"center"}
                   bgPosition={"center"}
                   alignItems={"center"}
-                  width={{ base: "90%", md: 950 }}
-                  height={{ base: "300", md: 400 }}
-                  p={{ base: 4, md: 10 }}
-                  mt={{ base: "-5", md: "5" }}
+                  width={{ md: 950 }}
+                  height={{ md: 400 }}
+                  p={{ md: 10 }}
+                  mt={{ md: "5" }}
                   borderRadius={15}
                   bg="linear-gradient(93.17deg, rgba(91, 143, 129, 0.7) 0%, rgba(255, 255, 255, 0.2) 97.37%)"
-                  
                   boxShadow="inset 0px -4px 10px rgba(91, 143, 129, 0.7)"
                 >
                   <Grid
                     templateAreas={`
-                  "nav main"
-                  "nav footer"
-                  "nav social"
-                `}
+                      "nav main"
+                      "nav footer"
+                      "nav social"
+                    `}
                     gridTemplateRows={{ md: "0.5fr 0.7fr 1fr" }}
-                    gridTemplateColumns={{ md: "0.5fr  1fr" }}
+                    gridTemplateColumns={{ md: "0.5fr 1fr" }}
                   >
                     <GridItem pl="2" area={"nav"}>
                       <ChakraImage
                         src={posArrayTeamLeads[selectedPosTeamLeads]?.image}
-                        fallbackSrc={
-                          posArrayTeamLeads[selectedPosTeamLeads]?.image1
-                        }
+                        fallbackSrc={posArrayTeamLeads[selectedPosTeamLeads]?.image1}
                         position="relative"
                         className="cursor-pointer"
-                        // ml={{ base: -4, md: 4 }}
                         mb={3}
-                        width={{ base: "100%", md: "80%" }}
+                        width={{ md: "80%" }}
                         size={"auto"}
-                        mt={{ base: 20, md: 12 }}
+                        mt={{ md: 12 }}
                       />
                     </GridItem>
-                    <GridItem pl={{ base: 2, md: "2" }} area={"main"}>
+                    
+                    {/* Main and footer sections for desktop */}
+                    <GridItem pl={{ md: "2" }} area={"main"}>
                       <Text
                         mt={2}
                         color={"white"}
-                        ml={{ base: 0, md: 4 }}
+                        ml={{ md: 4 }}
                         className="fade-in"
                         textAlign={"left"}
                         key={posArrayTeamLeads[selectedPosTeamLeads]?.key}
                         fontFamily={"Gilroy-SemiBold"}
-                        fontSize={{ base: "5vw", md: "4xl" }}
-                        display="inline"
+                        fontSize={{ md: "4xl" }}
+                        display="block"
                         mb={2}
-
-                        //  bgGradient="linear-gradient(99.23deg, #EA4335 2.35%, #4285F4 39.86%, #0F9D58 66.07%, #FBBC04 94.29%)"
+                        noOfLines={{ md: 2 }}
+                        maxWidth="100%"
+                        overflow="hidden"
+                        textOverflow="ellipsis"
                       >
-                        Hi, my name is {/* <span className="gradient-text"> */}
-                        <span>
-                          {posArrayTeamLeads[selectedPosTeamLeads]?.id}
-                        </span>
+                        Hi, my name is <span>{posArrayTeamLeads[selectedPosTeamLeads]?.id}</span>
                       </Text>
                     </GridItem>
-                    <GridItem
-                      pl="2"
-                      area={"footer"}
-                      pb={0}
-                      mb={0}
-                      display="inline"
-                    >
+                    
+                    <GridItem pl="2" area={"footer"} pb={0} mb={0} display="block">
                       <Text
-                        mt={{ base: 2, md: 2 }}
+                        mt={{ md: 2 }}
                         fontFamily={"Gilroy-Regular"}
-                        fontSize={{ base: "2.5vw", md: "md" }}
+                        fontSize={{ md: "md" }}
                         color={"white"}
-                        ml={{ base: 0, md: 4 }}
+                        ml={{ md: 4 }}
                         className="fade-in"
                         textAlign={"left"}
                         key={posArrayTeamLeads[selectedPosTeamLeads]?.key}
-                        // mb={{ base: '0', md: '0' }}
-
-                        // mb = '20px'
-                        display={"box"}
+                        display={"block"}
                         p={0}
+                        noOfLines={{ md: 6 }}
+                        maxHeight={{ md: "auto" }}
+                        overflow="hidden"
                       >
                         {posArrayTeamLeads[selectedPosTeamLeads]?.content}
                       </Text>
                     </GridItem>
+                    
+                    {/* Social links for desktop */}
                     <GridItem area={"social"}>
                       <SimpleGrid
-                        columns={{ base: 1, md: 2 }}
-                        spacingX="20px"
-                        spacingY={{ base: "0px", md: "30px" }}
-                        ml={{ base: 2, md: 4 }}
-                        mt={{ base: 2, md: 2 }}
-                        // border = {'4px green solid '}
+                        columns={{ md: 2 }}
+                        spacingX={{ md: "20px" }}
+                        spacingY={{ md: "30px" }}
+                        ml={{ md: 4 }}
+                        mt={{ md: 2 }}
                       >
-                        <Box height="35px">
+                        {/* Desktop social icons - GitHub */}
+                        <Box height={{ md: "35px" }}>
                           <Box
-                            _hover={{ color: "#5B8F81" }}
+                            _hover={{ color: "#171515" }}
                             color={"white"}
-                            width={{ base: "20px", md: "35px" }}
-                            height={{ base: "20px", md: "40px" }}
-                            display="inline"
+                            width={{ base: "100%", md: "100%" }}
+                            height={{ base: "auto", md: "auto" }}
+                            display="flex"
+                            alignItems="center"
                           >
-                            <HStack>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.xtwitter
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                display={"inline"}
-                              >
-                                <XIcon
-                                  style={{ fontSize: "3.7vw" }}
-                                  className="gfg-div"
-                                />{" "}
-                              </Link>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.xtwitter
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                display={"inline"}
-                              >
-                                <Text
-                                  display={"inline"}
-                                  fontFamily={"Gilroy-Medium"}
-                                  fontSize={{ base: "3vw", md: "1.2vw" }}
-                                  mr={1}
+                            <HStack spacing={{ base: 1, md: 2 }} alignItems="center" width="100%">
+                              <Box width={{ base: "auto", md: "auto" }} minWidth={{ base: "18px", md: "60px" }}>
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.github}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-flex"}
                                 >
-                                  {
-                                    posArrayTeamLeads[selectedPosTeamLeads]
-                                      ?.xtwitterhandle
-                                  }
-                                </Text>
-                              </Link>
-                            </HStack>
-                          </Box>
-                        </Box>
-                        <Box height="35px">
-                          <Box
-                            _hover={{ color: "#0072b1" }}
-                            color={"white"}
-                            width={{ base: "20px", md: "35px" }}
-                            height={{ base: "20px", md: "40px" }}
-                            display="inline"
-                          >
-                            <HStack>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.linkedin
-                                }
-                                display={"inline"}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                <FaLinkedin className="gfg-div" />{" "}
-                              </Link>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.linkedin
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                display={"inline"}
-                              >
-                                <Text
-                                  display={"inline"}
-                                  fontFamily={"Gilroy-Medium"}
-                                  fontSize={{ base: "3vw", md: "1.2vw" }}
+                                  <FaGithub className="gfg-div" />
+                                </Link>
+                              </Box>
+                              <Box className="social-text-container" flex="1">
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.github}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-block"}
+                                  width="100%"
                                 >
-                                  {
-                                    posArrayTeamLeads[selectedPosTeamLeads]
-                                      ?.Linkedinhandle
-                                  }
-                                </Text>
-                              </Link>
+                                  <Text
+                                    className="text-overflow-ellipsis"
+                                    fontFamily={"Gilroy-Medium"}
+                                    fontSize={{ base: "2.8vw", md: "1.2vw" }}
+                                    noOfLines={1}
+                                  >
+                                    {posArrayTeamLeads[selectedPosTeamLeads]?.githubhandle}
+                                  </Text>
+                                </Link>
+                              </Box>
                             </HStack>
                           </Box>
                         </Box>
 
-                        <Box height="35px">
+                        {/* Apply the same improved pattern to other social links */}
+                        {/* Instagram */}
+                        <Box height={{ md: "35px" }}>
                           <Box
-                            _hover={{ color: "Black" }}
+                            _hover={{ color: "#E4405F" }}
                             color={"white"}
-                            width={{ base: "20px", md: "35px" }}
-                            height={{ base: "20px", md: "40px" }}
-                            display="inline"
+                            width={{ base: "100%", md: "100%" }}
+                            height={{ base: "auto", md: "auto" }}
+                            display="flex"
+                            alignItems="center"
                           >
-                            <HStack>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.github
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                display={"inline"}
-                              >
-                                <FaGithub className="gfg-div" />
-                              </Link>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.github
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                display={"inline"}
-                              >
-                                <Text
-                                  display={"inline"}
-                                  fontFamily={"Gilroy-Medium"}
-                                  fontSize={{ base: "3vw", md: "1.2vw" }}
+                            <HStack spacing={{ base: 1, md: 2 }} alignItems="center" width="100%">
+                              <Box width={{ base: "auto", md: "auto" }} minWidth={{ base: "18px", md: "60px" }}>
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.instagram}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-flex"}
                                 >
-                                  {
-                                    posArrayTeamLeads[selectedPosTeamLeads]
-                                      ?.githubhandle
-                                  }
-                                </Text>
-                              </Link>
+                                  <FaInstagram className="gfg-div" />
+                                </Link>
+                              </Box>
+                              <Box className="social-text-container" flex="1">
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.instagram}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-block"}
+                                  width="100%"
+                                >
+                                  <Text
+                                    className="text-overflow-ellipsis"
+                                    fontFamily={"Gilroy-Medium"}
+                                    fontSize={{ base: "2.8vw", md: "1.2vw" }}
+                                    noOfLines={1}
+                                  >
+                                    {posArrayTeamLeads[selectedPosTeamLeads]?.instagramhandle}
+                                  </Text>
+                                </Link>
+                              </Box>
                             </HStack>
                           </Box>
                         </Box>
-                        <Box height="35px">
+
+                        {/* YouTube */}
+                        <Box height={{ md: "35px" }}>
                           <Box
-                            _hover={{ color: "#7289d9" }}
+                            _hover={{ color: "#FF0000" }}
                             color={"white"}
-                            width={{ base: "20px", md: "35px" }}
-                            height={{ base: "20px", md: "40px" }}
-                            display="inline"
+                            width={{ base: "100%", md: "100%" }}
+                            height={{ base: "auto", md: "auto" }}
+                            display="flex"
+                            alignItems="center"
                           >
-                            <HStack>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.discord
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                display={"inline"}
-                              >
-                                <FaDiscord className="gfg-div" />{" "}
-                              </Link>
-                              <Link
-                                href={
-                                  posArrayTeamLeads[selectedPosTeamLeads]
-                                    ?.discord
-                                }
-                                target="_blank"
-                                rel="noreferrer"
-                                display={"inline"}
-                              >
-                                <Text
-                                  display={"inline"}
-                                  fontFamily={"Gilroy-Medium"}
-                                  fontSize={{ base: "3vw", md: "1.2vw" }}
+                            <HStack spacing={{ base: 1, md: 2 }} alignItems="center" width="100%">
+                              <Box width={{ base: "auto", md: "auto" }} minWidth={{ base: "18px", md: "60px" }}>
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.youtube}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-flex"}
                                 >
-                                  {
-                                    posArrayTeamLeads[selectedPosTeamLeads]
-                                      ?.discordhandle
-                                  }
-                                </Text>
-                              </Link>
+                                  <FaYoutube className="gfg-div" />
+                                </Link>
+                              </Box>
+                              <Box className="social-text-container" flex="1">
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.youtube}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-block"}
+                                  width="100%"
+                                >
+                                  <Text
+                                    className="text-overflow-ellipsis"
+                                    fontFamily={"Gilroy-Medium"}
+                                    fontSize={{ base: "2.8vw", md: "1.2vw" }}
+                                    noOfLines={1}
+                                  >
+                                    {posArrayTeamLeads[selectedPosTeamLeads]?.youtubehandle}
+                                  </Text>
+                                </Link>
+                              </Box>
+                            </HStack>
+                          </Box>
+                        </Box>
+
+                        {/* LinkedIn */}
+                        <Box height={{ md: "35px" }}>
+                          <Box
+                            _hover={{ color: "#0A66C2" }}
+                            color={"white"}
+                            width={{ base: "100%", md: "100%" }}
+                            height={{ base: "auto", md: "auto" }}
+                            display="flex"
+                            alignItems="center"
+                          >
+                            <HStack spacing={{ base: 1, md: 2 }} alignItems="center" width="100%">
+                              <Box width={{ base: "auto", md: "auto" }} minWidth={{ base: "18px", md: "60px" }}>
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.linkedin}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-flex"}
+                                >
+                                  <FaLinkedin className="gfg-div" />
+                                </Link>
+                              </Box>
+                              <Box className="social-text-container" flex="1">
+                                <Link
+                                  href={posArrayTeamLeads[selectedPosTeamLeads]?.linkedin}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  display={"inline-block"}
+                                  width="100%"
+                                >
+                                  <Text
+                                    className="text-overflow-ellipsis"
+                                    fontFamily={"Gilroy-Medium"}
+                                    fontSize={{ base: "2.8vw", md: "1.2vw" }}
+                                    noOfLines={1}
+                                  >
+                                    {posArrayTeamLeads[selectedPosTeamLeads]?.linkedinhandle}
+                                  </Text>
+                                </Link>
+                              </Box>
                             </HStack>
                           </Box>
                         </Box>
                       </SimpleGrid>
                     </GridItem>
                   </Grid>
+                </Box>
+                
+                {/* For mobile view - stacked layout */}
+                <Box
+                  display={{ base: "flex", md: "none" }}
+                  flexDirection="column"
+                  justifySelf={"center"}
+                  alignItems={"center"}
+                  width={{ base: "90%" }}
+                  borderRadius={15}
+                  bg="linear-gradient(93.17deg, rgba(91, 143, 129, 0.7) 0%, rgba(255, 255, 255, 0.2) 97.37%)"
+                  boxShadow="inset 0px -4px 10px rgba(91, 143, 129, 0.7)"
+                  p={{ base: 4 }}
+                  mt={{ base: "-5" }}
+                >
+                  {/* Mobile image on top */}
+                  <Box 
+                    width="100%" 
+                    display="flex" 
+                    justifyContent="center" 
+                    mb={4}
+                  >
+                    <ChakraImage
+                      src={posArrayTeamLeads[selectedPosTeamLeads]?.image}
+                      fallbackSrc={posArrayTeamLeads[selectedPosTeamLeads]?.image1}
+                      position="relative"
+                      className="cursor-pointer"
+                      width={{ base: "70%" }}
+                      maxWidth="200px"
+                      size={"auto"}
+                      borderRadius="10px"
+                    />
+                  </Box>
+                  
+                  {/* Mobile name section */}
+                  <Box width="100%" mb={3}>
+                    <Text
+                      color={"white"}
+                      className="fade-in"
+                      textAlign={"center"}
+                      key={`name-${posArrayTeamLeads[selectedPosTeamLeads]?.key}`}
+                      fontFamily={"Gilroy-SemiBold"}
+                      fontSize={{ base: "4.5vw" }}
+                      mb={2}
+                      noOfLines={1}
+                    >
+                      Hi, my name is <span>{posArrayTeamLeads[selectedPosTeamLeads]?.id}</span>
+                    </Text>
+                  </Box>
+                  
+                  {/* Mobile content section */}
+                  <Box width="100%" mb={4}>
+                    <Text
+                      fontFamily={"Gilroy-Regular"}
+                      fontSize={{ base: "2.8vw" }}
+                      color={"white"}
+                      className="fade-in"
+                      textAlign={"center"}
+                      key={`content-${posArrayTeamLeads[selectedPosTeamLeads]?.key}`}
+                      display={"block"}
+                      noOfLines={4}
+                      maxHeight="12vh"
+                      overflow="hidden"
+                    >
+                      {posArrayTeamLeads[selectedPosTeamLeads]?.content}
+                    </Text>
+                  </Box>
+                  
+                  {/* Mobile social links - 2x2 grid */}
+                  <SimpleGrid
+                    columns={2}
+                    spacingX="15px"
+                    spacingY="10px"
+                    width="100%"
+                  >
+                    {/* GitHub */}
+                    <Box height="25px">
+                      <Box
+                        _hover={{ color: "#171515" }}
+                        color={"white"}
+                        width="100%"
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <HStack spacing={1} alignItems="center" width="100%">
+                          <Box minWidth="18px">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.github}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-flex"}
+                            >
+                              <FaGithub className="gfg-div" />
+                            </Link>
+                          </Box>
+                          <Box className="social-text-container" flex="1">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.github}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-block"}
+                              width="100%"
+                            >
+                              <Text
+                                className="text-overflow-ellipsis"
+                                fontFamily={"Gilroy-Medium"}
+                                fontSize="2.8vw"
+                                noOfLines={1}
+                              >
+                                {posArrayTeamLeads[selectedPosTeamLeads]?.githubhandle}
+                              </Text>
+                            </Link>
+                          </Box>
+                        </HStack>
+                      </Box>
+                    </Box>
+                    
+                    {/* Instagram */}
+                    <Box height="25px">
+                      <Box
+                        _hover={{ color: "#E4405F" }}
+                        color={"white"}
+                        width="100%"
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <HStack spacing={1} alignItems="center" width="100%">
+                          <Box minWidth="18px">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.instagram}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-flex"}
+                            >
+                              <FaInstagram className="gfg-div" />
+                            </Link>
+                          </Box>
+                          <Box className="social-text-container" flex="1">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.instagram}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-block"}
+                              width="100%"
+                            >
+                              <Text
+                                className="text-overflow-ellipsis"
+                                fontFamily={"Gilroy-Medium"}
+                                fontSize="2.8vw"
+                                noOfLines={1}
+                              >
+                                {posArrayTeamLeads[selectedPosTeamLeads]?.instagramhandle}
+                              </Text>
+                            </Link>
+                          </Box>
+                        </HStack>
+                      </Box>
+                    </Box>
+                    
+                    {/* YouTube */}
+                    <Box height="25px">
+                      <Box
+                        _hover={{ color: "#FF0000" }}
+                        color={"white"}
+                        width="100%"
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <HStack spacing={1} alignItems="center" width="100%">
+                          <Box minWidth="18px">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.youtube}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-flex"}
+                            >
+                              <FaYoutube className="gfg-div" />
+                            </Link>
+                          </Box>
+                          <Box className="social-text-container" flex="1">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.youtube}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-block"}
+                              width="100%"
+                            >
+                              <Text
+                                className="text-overflow-ellipsis"
+                                fontFamily={"Gilroy-Medium"}
+                                fontSize="2.8vw"
+                                noOfLines={1}
+                              >
+                                {posArrayTeamLeads[selectedPosTeamLeads]?.youtubehandle}
+                              </Text>
+                            </Link>
+                          </Box>
+                        </HStack>
+                      </Box>
+                    </Box>
+                    
+                    {/* LinkedIn */}
+                    <Box height="25px">
+                      <Box
+                        _hover={{ color: "#0A66C2" }}
+                        color={"white"}
+                        width="100%"
+                        display="flex"
+                        alignItems="center"
+                      >
+                        <HStack spacing={1} alignItems="center" width="100%">
+                          <Box minWidth="18px">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.linkedin}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-flex"}
+                            >
+                              <FaLinkedin className="gfg-div" />
+                            </Link>
+                          </Box>
+                          <Box className="social-text-container" flex="1">
+                            <Link
+                              href={posArrayTeamLeads[selectedPosTeamLeads]?.linkedin}
+                              target="_blank"
+                              rel="noreferrer"
+                              display={"inline-block"}
+                              width="100%"
+                            >
+                              <Text
+                                className="text-overflow-ellipsis"
+                                fontFamily={"Gilroy-Medium"}
+                                fontSize="2.8vw"
+                                noOfLines={1}
+                              >
+                                {posArrayTeamLeads[selectedPosTeamLeads]?.linkedinhandle}
+                              </Text>
+                            </Link>
+                          </Box>
+                        </HStack>
+                      </Box>
+                    </Box>
+                  </SimpleGrid>
                 </Box>
               </Flex>
 

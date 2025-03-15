@@ -15,8 +15,10 @@ html {
 
 #progressBar {
   background: linear-gradient(to left, #5b8f81, #dfeee0);
-  transform-origin: top left;
-  transform: scale(0, 0);
+  transform-origin: left;
+  width: 100%;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
   border-radius: 40px;
 
   /* opacity: 0; */
@@ -26,4 +28,19 @@ html {
 #progressBar {
   height: 7px;
   border-radius: 40px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 768px) {
+  #progressBarContainer {
+    top: 60px; /* Adjust this value to align with the mobile navbar */
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  #progressBar {
+    transition: transform 0.05s ease-out;
+  }
 }

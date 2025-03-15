@@ -4,11 +4,31 @@ import ProgressBar from "./progressBar/ProgressBar";
 import { Link, useLocation } from "react-router-dom";
 
 const logo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/logos/3.0%20logo%202025.png";
+const blueStarLogo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/brands/Blue%20Star%20Sponsor%20.png"; // Add the path to the Blue Star logo
+
+// Add these custom styles at the top of the file
+const mobileStyles = {
+  mobileLogo: {
+    maxHeight: '50px',
+    width: 'auto'
+  },
+  mobileBlueStarLogo: {
+    maxHeight: '45px',
+    width: 'auto',
+    marginLeft: '10px'
+  },
+  mobileBrochureBtn: {
+    fontSize: '0.8rem',
+    padding: '0.3rem 0.8rem',
+    marginLeft: '10px'
+  }
+};
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const onScroll = () => {
@@ -32,6 +52,15 @@ export const NavBar = () => {
     setActiveLink(currentPath === "/" ? "home" : currentPath.substr(1));
   }, [location.pathname]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const getLinkHref = (section) => {
     return location.pathname === "/" ? `/#${section}` : `/#${section}`;
   };
@@ -40,9 +69,23 @@ export const NavBar = () => {
     <>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
-          <Navbar.Brand className="nav-logo">
+          <Navbar.Brand className="nav-logo" style={{ display: "flex", alignItems: "center" }}>
             <a href="/#home" alt="Logo">
-              <img src={logo} alt="Logo" id="logo" />
+              <img 
+                src={logo} 
+                alt="Logo" 
+                id="logo" 
+                style={isMobile ? mobileStyles.mobileLogo : {}}
+              />
+            </a>
+            {/* Add Blue Star sponsor logo */}
+            <a href="https://bluestar.com" target="_blank" rel="noreferrer" alt="Blue Star">
+              <img 
+                src={blueStarLogo} 
+                alt="Blue Star Logo" 
+                id="blue-star-logo" 
+                style={isMobile ? mobileStyles.mobileBlueStarLogo : { height: '60px', marginLeft: '25px' }}
+              />
             </a>
           </Navbar.Brand>
 
@@ -53,8 +96,9 @@ export const NavBar = () => {
               border: "1px solid white",
               color: "white",
               fontWeight: "300",
+              ...(isMobile ? mobileStyles.mobileBrochureBtn : {})
             }}
-            className="hover:bg-[#5B8F81] text-white font-bold py-2 px-4 rounded d-md-none ml-auto"
+            className="hover:bg-[#5B8F81] text-white font-bold rounded d-md-none ml-auto"
             onClick={() => window.open("https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Brochure/publicityBrochure.pdf", "_blank")}
           >
             Brochure
@@ -84,15 +128,15 @@ export const NavBar = () => {
                 Schedule
               </Nav.Link>
 
-              {/* <Nav.Link
+              <Nav.Link
                 href={getLinkHref("themes")}
                 className={
                   activeLink === "themes" ? "active navbar-link" : "navbar-link"
                 }
                 onClick={() => setActiveLink("themes")}
               >
-                Themes
-              </Nav.Link> */}
+                Theme
+              </Nav.Link>
 
               <Nav.Link
                 href={getLinkHref("sponsors")}
