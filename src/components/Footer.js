@@ -2,8 +2,11 @@ import React from 'react';
 import './Footer.css';
 import { FaGithub, FaInstagram, FaLinkedin, FaDiscord } from 'react-icons/fa';
 
-// Import logo
-const logo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/logos/3.0%20logo%202025.png";
+// CDN url for logo
+// const logo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/logos/3.0%20logo%202025.png";
+
+// Local url for logo
+import logo from "../assets/img/3.0 logo 2025.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,7 +51,7 @@ const Footer = () => {
           </div>
           <div className="social-links">
             {socialLinks.map((link, index) => (
-              <a 
+              <a
                 key={index}
                 href={link.url}
                 target="_blank"

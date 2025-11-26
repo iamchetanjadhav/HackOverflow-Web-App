@@ -6,46 +6,41 @@
   flex-direction: column;
   background-color: aliceblue;
 }
+
 .gradient-text {
-  background: linear-gradient(
-    99.23deg,
-    #ea4335 2.35%,
-    #4285f4 39.86%,
-    #0f9d58 66.07%,
-    #fbbc04 94.29%
-  );
+  background: linear-gradient(99.23deg,
+      #ea4335 2.35%,
+      #4285f4 39.86%,
+      #0f9d58 66.07%,
+      #fbbc04 94.29%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 .instagram {
   background: #f09433;
-  background: -moz-linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  background: -webkit-linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  background: linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  background: -moz-linear-gradient(45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%);
+  background: -webkit-linear-gradient(45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%);
+  background: linear-gradient(45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
 }
+
 .container {
   position: relative;
 }
@@ -53,6 +48,7 @@
 .overlap1 {
   z-index: 1;
 }
+
 .overlap2 {
   z-index: 2;
 }
@@ -63,15 +59,16 @@
   */
 @font-face {
   font-family: "Gilroy";
-  src: url("/src/fonts/Gilroy/Gilroy-Regular.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Regular.woff2") format("woff2");
   /* src: url("fonts/Gilroy/Gilroy-Regular.woff2") format("woff2"); */
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Gilroy";
-  src: url("/src/fonts/Gilroy/Gilroy-Bold.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -79,15 +76,16 @@
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/src/fonts/Gilroy/Gilroy-Black.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
+
 /*Medium Semibold light Heavy*/
 @font-face {
   font-family: "Gilroy";
-  src: url("/src/fonts/Gilroy/Gilroy-Medium.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -95,14 +93,15 @@
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/src/fonts/Gilroy/Gilroy-Light.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Gilroy";
-  src: url("/src/fonts/Gilroy/Gilroy-Heavy.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Heavy.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -110,7 +109,7 @@
 
 @font-face {
   font-family: "Gilroy-Regular";
-  src: url("/src/fonts/Gilroy/Gilroy-Regular.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -118,7 +117,7 @@
 
 @font-face {
   font-family: "Gilroy-Bold";
-  src: url("/src/fonts/Gilroy/Gilroy-Bold.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -126,43 +125,48 @@
 
 @font-face {
   font-family: "Gilroy-Black";
-  src: url("/src/fonts/Gilroy/Gilroy-Black.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
+
 /*Medium Semibold light Heavy*/
 @font-face {
   font-family: "Gilroy-Medium";
-  src: url("/src/fonts/Gilroy/Gilroy-Medium.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Gilroy-SemiBold";
-  src: url("/src/fonts/Gilroy/Gilroy-Semibold.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Semibold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Gilroy-Light";
-  src: url("/src/fonts/Gilroy/Gilroy-Light.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Gilroy-Heavy";
-  src: url("/src/fonts/Gilroy/Gilroy-Heavy.woff2") format("woff2");
+  src: url("../../fonts/Gilroy/Gilroy-Heavy.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "BebasNeue-Regular";
-  src: url("/src/fonts/BebasNeue/BebasNeue-Regular.ttf") format("trueType");
+  src: url("../../fonts/BebasNeue/BebasNeue-Regular.ttf") format("trueType");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -177,6 +181,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -209,36 +214,36 @@
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
-  
+
   .social-text-container {
     max-width: 80px;
   }
-  
+
   /* Improved touch targets for mobile */
   .social-icon-link {
     padding: 8px;
     margin-right: 5px;
   }
-  
+
   .social-icon-container {
     display: flex;
     align-items: center;
     min-height: 30px; /* Ensures consistent height */
   }
-  
+
   .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 30px; /* Minimum width for the icon */
   }
-  
+
   .social-text-container {
     display: flex;
     align-items: center;
     min-height: 30px; /* Match height with icon container */
   }
-  
+
   /* Improved touch targets for mobile */
   .social-icon-link {
     padding: 6px;
@@ -246,7 +251,7 @@
     align-items: center;
     height: 100%;
   }
-  
+
   .social-link-text {
     line-height: 1.3;
     padding-top: 2px; /* Slight adjustment to align with icon */
@@ -266,10 +271,10 @@
   .social-text-container {
     max-width: 120px;
   }
-  
-  .instagram-handle, 
-  .github-handle, 
-  .youtube-handle, 
+
+  .instagram-handle,
+  .github-handle,
+  .youtube-handle,
   .linkedin-handle {
     font-size: 11px;
   }

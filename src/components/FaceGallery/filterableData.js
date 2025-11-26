@@ -4,7 +4,6 @@ import image_3 from "../../assets/img/Events/college-club-events-23/image3.webp"
 import image_4 from "../../assets/img/Events/college-club-events-23/image4.webp";
 
 //HackOverflow 1.0
-
 import image1 from "../../assets/img/Events/1.0/HackOverflow 1.0/DSC_0012.webp";
 import image2 from "../../assets/img/Events/1.0/HackOverflow 1.0/DSC_0022.webp";
 import image3 from "../../assets/img/Events/1.0/HackOverflow 1.0/DSC_0036.webp";
@@ -17,9 +16,11 @@ import image9 from "../../assets/img/Events/1.0/HackOverflow 1.0/DSC_0187.webp";
 import image10 from "../../assets/img/Events/1.0/HackOverflow 1.0/DSC_0211.webp";
 import image11 from "../../assets/img/Events/1.0/HackOverflow 1.0/DSC_0224.webp";
 import image12 from "../../assets/img/Events/1.0/HackOverflow 1.0/DSC_8219.webp";
+
 // import image13 from "../../assets/img/Events/1.0/day1/_MG_9817.jpg";
 // import image14 from "../../assets/img/Events/1.0/day1/_MG_9839.jpg";
 // import image15 from "../../assets/img/Events/1.0/day1/_MG_9971.jpg";
+
 
 //HackOverflow 2.0
 
@@ -57,6 +58,10 @@ import image42 from "../../assets/img/pastwinners/First.webp";
 import image43 from "../../assets/img/pastwinners/Second.webp";
 import image44 from "../../assets/img/pastwinners/Third.webp";
 
+// Aftermovies
+import ho1Aftermovie from "../../assets/img/ho1.png";
+import ho2Aftermovie from "../../assets/img/ho2.png";
+
 export const filterableData = [
   // {
   //   name: "day 1",
@@ -67,103 +72,127 @@ export const filterableData = [
   // },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/HO1%20Aftermovie.jpg',
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/HO1%20Aftermovie.jpg',
+    image: ho1Aftermovie,
     link: 'https://youtu.be/HILS0q8Pdn8?si=-l5T96EFA3WMzdoN'
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0022.webp',
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0022.webp',
+    image: image2,
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0036.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0036.webp'
+    image: image3
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0042.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0042.webp'
+    image: image4
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0052.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0052.webp',
+    image: image5
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0068.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0068.webp',
+    image: image6,
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0094.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0094.webp',
+    image: image7
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0146.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0146.webp',
+    image: image8
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0187.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0187.webp',
+    image: image9
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0211.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0211.webp',
+    image: image10
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0224.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_0224.webp',
+    image: image11
   },
   {
     category: 'hackoverflow1',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_8219.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO1/DSC_8219.webp',
+    image: image12
   },
   
   // DAY 2
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/HO2%20Aftermovie.jpg',
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/HO2%20Aftermovie.jpg',
+    image: ho2Aftermovie,
     link: 'https://youtu.be/VqBp6znJSF4?si=CpLPilo2CJYruCUW'
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/_MG_8256.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/_MG_8256.webp',
+    image: image17
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/_MG_8302.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/_MG_8302.webp',
+    image: image18
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0123.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0123.webp',
+    image: image19
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0167.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0167.webp',
+    image: image20
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0219.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0219.webp',
+    image: image21
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0238.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0238.webp',
+    image: image22
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0462.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_0462.webp',
+    image: image23
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_7864.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_7864.webp',
+    image: image27
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_7925.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_7925.webp',
+    image: image28
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_8071.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/DSC_8071.webp',
+    image: image29
   },
   {
     category: 'hackoverflow2',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/IMG_8507.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/HO2/IMG_8507.webp',
+    image: image30
   },
   // {
   //   name: "HackOverflow 2.0",
@@ -229,14 +258,17 @@ export const filterableData = [
   // },
   {
     category: 'winners',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/Winners/First.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/Winners/First.webp',
+    image: image42
   },
   {
     category: 'winners',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/Winners/Second.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/Winners/Second.webp',
+    image: image43
   },
   {
     category: 'winners',
-    image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/Winners/Third.webp'
+    // image: 'https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/Gallery/Winners/Third.webp',
+    image: image44
   },
 ];

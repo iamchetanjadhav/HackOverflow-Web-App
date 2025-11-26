@@ -32,6 +32,17 @@ import {
 import "./AppTeam.css";
 import "./Animation.css";
 
+// Local images for mentors, judges, and guests
+import sahilGaikwad from "../../assets/img/teams/sahil gaikwad.png";
+import swastikPatil from "../../assets/img/teams/swastik_patil.png";
+import yashMahajan from "../../assets/img/teams/yash mahajan.png";
+import prathameshPatil from "../../assets/img/teams/prathamesh patil.png";
+import nikitagandhi from "../../assets/img/teams/nikita gandhi.png";
+import manavGupta from "../../assets/img/teams/manav gupta.png";
+import niravSanghavi from "../../assets/img/teams/nirav sanghavi.png";
+import rohiniBhosale from "../../assets/img/teams/rohini bhosale.png";
+import shridharMankar from "../../assets/img/teams/shridhar mankar.png";
+
 const TeamNavMember = (props) => {
   //hover state
   const [hover, setHover] = useState(false);
@@ -217,8 +228,10 @@ function Teampage() {
   // MENTORS SECTION .......................////////////////////////////
   const Mentors = [
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/sahil%20gaikwad.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/sahil%20gaikwad.png",
+      //  image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/sahil%20gaikwad.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/sahil%20gaikwad.png",
+      image: sahilGaikwad,
+      image1: sahilGaikwad,
       id: "Sahil",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
@@ -234,8 +247,10 @@ function Teampage() {
       key: "1",
     },
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/swastik_patil.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/swastik_patil.png",
+      //  image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/swastik_patil.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/swastik_patil.png",
+      image: swastikPatil,
+      image1: swastikPatil,
       id: "Swastik",
       github: "https://github.com/Swastik-Patil",
       githubhandle: "@Swastik-Patil",
@@ -251,8 +266,10 @@ function Teampage() {
       key: "2",
     },
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/yash%20mahajan.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/yash%20mahajan.png",
+      // image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/yash%20mahajan.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/yash%20mahajan.png",
+      image: yashMahajan,
+      image1: yashMahajan,
       id: "Yash",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
@@ -268,8 +285,10 @@ function Teampage() {
       key: "3",
     },
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/prathamesh%20pandey.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/prathamesh%20pandey.png",
+      // image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/prathamesh%20pandey.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/prathamesh%20pandey.png",
+      image: prathameshPatil,
+      image1: prathameshPatil,
       id: "Prathamesh",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
@@ -306,8 +325,10 @@ function Teampage() {
   // JUDGES ARRAY.................................//////////////////////////////
   const TeamLeads = [
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nikita%20gandhi.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nikita%20gandhi.png",
+      // image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nikita%20gandhi.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nikita%20gandhi.png",
+      image: nikitagandhi,
+      image1: nikitagandhi,
       id: "Nikita Gandhi",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
@@ -323,8 +344,10 @@ function Teampage() {
       key: "1",
     },
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/manav%20gupta.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/manav%20gupta.png",
+      // image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/manav%20gupta.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/manav%20gupta.png",
+      image: manavGupta,
+      image1: manavGupta,
       id: "Manav Gupta",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
@@ -340,8 +363,10 @@ function Teampage() {
       key: "2",
     },
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nirav%20sanghavi.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nirav%20sanghavi.png",
+      // image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nirav%20sanghavi.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/nirav%20sanghavi.png",
+      image: niravSanghavi,
+      image1: niravSanghavi,
       id: "Nirav Sanghavi",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
@@ -361,8 +386,10 @@ function Teampage() {
   // GUESTS ARRAY STARTS HERE..................
   const CoreTeam = [
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/rohini%20bhosale.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/rohini%20bhosale.png",
+      // image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/rohini%20bhosale.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/rohini%20bhosale.png",
+      image: rohiniBhosale,
+      image1: rohiniBhosale,
       id: "Rohini Bhosale",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",
@@ -378,8 +405,10 @@ function Teampage() {
       key: "1",
     },
     {
-      image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/shridhar%20mankar.png",
-      image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/shridhar%20mankar.png",
+      // image: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/shridhar%20mankar.png",
+      // image1: "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/teams/shridhar%20mankar.png",
+      image: shridharMankar,
+      image1: shridharMankar,
       id: "Shridhar Mankar",
       github: "https://hackoverflow3.tech/",
       githubhandle: "@coming_soon",

@@ -42,13 +42,23 @@ const CollegeClub = () => {
 
   // CDN URLs for images - Updated with correct path structure
   const images = [
-    "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image1.webp",
-    "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image2.webp",
-    "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image3.webp",
-    "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image4.webp",
-    "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image5.webp",
-    "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image6.webp",
-    "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image7.webp"
+    //CDN urls
+    //  "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image1.webp",
+    // "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image2.webp",
+    // "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image3.webp",
+    // "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image4.webp",
+    // "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image5.webp",
+    // "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image6.webp",
+    // "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/CourselGallery/image7.webp",
+
+    //Local urls
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7
   ];
 
   // Error handling for images

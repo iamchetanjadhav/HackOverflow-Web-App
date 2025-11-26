@@ -3,8 +3,13 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import ProgressBar from "./progressBar/ProgressBar";
 import { Link, useLocation } from "react-router-dom";
 
-const logo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/logos/3.0%20logo%202025.png";
-const blueStarLogo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/brands/Blue%20Star%20Sponsor%20.png"; // Add the path to the Blue Star logo
+//CDN url for logo and blue star logo
+// const logo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/logos/3.0%20logo%202025.png";
+// const blueStarLogo = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/assets/brands/Blue%20Star%20Sponsor%20.png"; // Add the path to the Blue Star logo
+
+// Local url for logo and blue star logo
+import logo from "../assets/img/3.0 logo 2025.png";
+import blueStarLogo from "../assets/img/Blue Star Sponsor .png";
 
 // Add these custom styles at the top of the file
 const mobileStyles = {
@@ -80,23 +85,23 @@ export const NavBar = () => {
         <Container>
           <Navbar.Brand className="nav-logo" style={{ display: "flex", alignItems: "center" }}>
             <a href="/#home" alt="Logo">
-              <img 
-                src={logo} 
-                alt="Logo" 
-                id="logo" 
+              <img
+                src={logo}
+                alt="Logo"
+                id="logo"
                 style={isMobile ? mobileStyles.mobileLogo : {}}
               />
             </a>
             {/* Add Blue Star sponsor logo with Co-Powered By text above */}
-            <div style={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              marginLeft: isMobile ? '10px' : '25px' 
+              marginLeft: isMobile ? '10px' : '25px'
             }}>
-              <div style={isMobile ? mobileStyles.coPoweredText : { 
-                fontSize: '0.8rem', 
-                color: '#fff', 
+              <div style={isMobile ? mobileStyles.coPoweredText : {
+                fontSize: '0.8rem',
+                color: '#fff',
                 marginBottom: '4px',
                 fontFamily: 'Poppins, sans-serif',
                 opacity: 0.9,
@@ -105,10 +110,10 @@ export const NavBar = () => {
                 Co-Powered By
               </div>
               <a href="https://www.bluestarindia.com/" target="_blank" rel="noreferrer" alt="Blue Star">
-                <img 
-                  src={blueStarLogo} 
-                  alt="Blue Star Logo" 
-                  id="blue-star-logo" 
+                <img
+                  src={blueStarLogo}
+                  alt="Blue Star Logo"
+                  id="blue-star-logo"
                   style={isMobile ? mobileStyles.mobileBlueStarLogo : { height: '60px' }}
                 />
               </a>

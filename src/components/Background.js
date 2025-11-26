@@ -2,8 +2,12 @@ import React from "react";
 import "./Background.css";
 
 // CDN URLs for background videos
-const backgroundVideoDesktop = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/bg_video/bg-desktop.webm";
-const backgroundVideoMobile = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/bg_video/bg-phone.webm";
+// const backgroundVideoDesktop = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/bg_video/bg-desktop.webm";
+// const backgroundVideoMobile = "https://hackoverflow3.blr1.cdn.digitaloceanspaces.com/bg_video/bg-phone.webm";
+
+// Local URLs for background videos
+import backgroundVideoDesktop from "../assets/videos/fast.webm";
+import backgroundVideoMobile from "../assets/videos/mobile.mp4";
 
 const Background = (props) => {
   const isMobile = window.innerWidth < 450;
@@ -24,13 +28,14 @@ const Background = (props) => {
       >
         <source
           src={isMobile ? backgroundVideoMobile : backgroundVideoDesktop}
-          type="video/webm"
+          // type="video/webm"
+          type={isMobile ? "video/mp4" : "video/webm"}
         />
       </video>
       <div className="overlay">
         {props.children}
         <div className="button-container">
-          <button  
+          <button
             className="button-86"
             onClick={handleRegisterButtonClick}
           >

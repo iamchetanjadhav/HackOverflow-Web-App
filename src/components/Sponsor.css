@@ -17,9 +17,7 @@
   font-style: normal;
   /* font-size: 20px; */
   font-size: 27px;
-  background: linear-gradient(
-    107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%
-  );
+  background: linear-gradient(107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -31,7 +29,8 @@
   border-radius: 20px;
   padding: 10px;
   margin-bottom: 45px;
-  transition: box-shadow 0.3s ease-in-out; /* Add transition effect */
+  transition: box-shadow 0.3s ease-in-out;
+  /* Add transition effect */
 }
 
 /* Hover effect with box shadow color related to background gradient */
@@ -40,7 +39,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  box-shadow: inset 0px -4px 10px rgba(110, 150, 135, 0.5); /* Adjust box shadow color */
+  box-shadow: inset 0px -4px 10px rgba(110, 150, 135, 0.5);
+  /* Adjust box shadow color */
 }
 
 .spon_p {
@@ -49,9 +49,7 @@
   font-style: normal;
   /* font-size: 10px; */
   font-size: 15px;
-  background: linear-gradient(
-    107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%
-  );
+  background: linear-gradient(107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -63,7 +61,7 @@
   box-shadow: rgb(91, 143, 129) 0px 4px 10px;
   border-radius: 20px;
   margin: auto;
-  background: url("/src/assets/img/ho2.png") 94% 122% / 63% no-repeat transparent;
+  background: url("../assets/img/ho2.png") 94% 122% / 63% no-repeat transparent;
   padding: 3rem 6rem 3rem 5rem;
   background-repeat: no-repeat;
   /* background-position: 106% 120%; */
@@ -86,9 +84,7 @@
 
 .spon_coll:hover {
 
-  background: linear-gradient(
-    107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%
-  );
+  background: linear-gradient(107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%);
 }
 
 .spon_coll {
@@ -133,13 +129,16 @@
   .CotentRow {
     margin-top: 2rem;
   }
+
   .spon_us {
     width: 38rem;
     height: 32rem;
   }
+
   .spon_head {
     font-size: 70px;
   }
+
   .spon_p {
     font-size: 20px;
   }
@@ -149,6 +148,184 @@
   .spon_coll {
     font-size: 2px;
   }
+
+  .spon_us {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 393px) {
+  .boxx {
+    margin-bottom: 0rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .boxx {
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .spon_us {
+    width: 46rem;
+    height: 36rem;
+  }
+}
+
+.CotentRow {
+  /* margin-top: 0px; */
+  margin-top: 5px;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-right: 50px solid #555;
+  border-bottom: 25px solid transparent;
+}
+
+.spon_head {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  /* font-size: 20px; */
+  font-size: 27px;
+  background: linear-gradient(107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Original styling for .SponsorText */
+.SponsorText {
+  box-shadow: inset 0px -4px 10px rgba(130, 180, 165, 0.7);
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 45px;
+  transition: box-shadow 0.3s ease-in-out; /* Add transition effect */
+}
+
+/* Hover effect with box shadow color related to background gradient */
+.SponsorText:hover {
+  background: linear-gradient(98.84deg, #ffff80 43.27%, #5B8F81 71.84%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  box-shadow: inset 0px -4px 10px rgba(110, 150, 135, 0.5); /* Adjust box shadow color */
+}
+
+.spon_p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  /* font-size: 10px; */
+  font-size: 15px;
+  background: linear-gradient(
+    107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%
+    );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.spon_us {
+  width: 21rem;
+  height: 25rem;
+  box-shadow: rgb(91, 143, 129) 0px 4px 10px;
+  border-radius: 20px;
+  margin: auto;
+  background: url("../assets/img/ho2.png") 94% 122% / 63% no-repeat transparent;
+  padding: 3rem 6rem 3rem 5rem;
+  background-repeat: no-repeat;
+  /* background-position: 106% 120%; */
+  /* background-position: 156% 91%; */
+  background-position: 145% 64%;
+}
+
+.spon_right {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: end;
+}
+
+.boxx a {
+  text-decoration: none;
+  color: white;
+  white-space: nowrap;
+}
+
+.spon_coll:hover {
+
+  background: linear-gradient(
+    107deg, #5B8F81 16.1%, rgba(130, 180, 165, 0.7) 54.35%
+    );
+}
+
+.spon_coll {
+  transition: 0.3s ease;
+  font-family: "Helvetica";
+  color: #fff;
+  cursor: pointer;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 40px;
+  gap: 15px;
+  letter-spacing: 1px;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  transition: 0.5s ease-in-out;
+  /* font-size: 1.8rem; */
+}
+
+/* .linkClass{
+  font-size: 8px;
+} */
+
+@media only screen and (max-width: 767.5px) {
+  .spon_us {
+    padding: 2.2rem;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .CotentRow {
+    margin-top: 2rem;
+  }
+
+  .spon_us {
+    width: 38rem;
+    height: 32rem;
+  }
+
+  .spon_head {
+    font-size: 70px;
+  }
+
+  .spon_p {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .spon_coll {
+    font-size: 2px;
+  }
+
   .spon_us {
     padding: 2rem 1rem 1rem 1rem;
   }
@@ -178,9 +355,9 @@
     width: 61rem;
     height: 32rem;
     padding: 3rem 5rem 3rem 5rem;
-    background: url("/src/assets/img/ho2.png") 123% 67% / 46% no-repeat
-      transparent;
+    background: url("../assets/img/ho2.png") 123% 67% / 46% no-repeat transparent;
   }
+
   .boxx {
     margin-bottom: 2rem;
   }
@@ -192,9 +369,9 @@
     height: 28rem;
     padding: 3rem 5rem 2rem 3rem;
     background-position: 120% 120%;
-    background: url("/src/assets/img/ho2.png") 119% 122% / 41% no-repeat
-      transparent;
+    background: url("../assets/img/ho2.png") 119% 122% / 41% no-repeat transparent;
   }
+
   .boxx {
     margin-bottom: 0rem;
   }
