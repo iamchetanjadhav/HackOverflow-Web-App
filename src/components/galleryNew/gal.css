@@ -1,113 +1,108 @@
 /* gal.css */
 
-
 h1#orange-pink {
-    color: #ff6f61;
+  color: #ff6f61;
 }
 
 /* Add these styles to your gal.css */
 
 /* Default styles for buttons */
 .filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .filter-button {
-    /* Existing button styles */
-    padding: 10px 15px;
-    border: 2px solid #6b46c1;
-    background-color: #6b46c1;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  /* Existing button styles */
+  padding: 10px 15px;
+  border: 2px solid #6b46c1;
+  background-color: #6b46c1;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .filter-button.active {
-    background-color: #5a36ab;
+  background-color: #5a36ab;
 }
 
 .filter-button:hover {
-    background-color: #5a36ab;
+  background-color: #5a36ab;
 }
 
 /* Media query for smaller screens (adjust max-width as needed) */
 @media (max-width: 768px) {
-    .filter-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
+  .filter-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .filter-button {
-        margin-bottom: 0.5rem;
-    }
+  .filter-button {
+    margin-bottom: 0.5rem;
+  }
 }
-
-
 
 /* Styling for the PhotoAlbum section */
 .react-photo-album {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    justify-content: center;
-    margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-
 .react-photo-album img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Added box-shadow transition */
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Added box-shadow transition */
 }
 
 .react-photo-album img:hover {
-    transform: scale(1.05);
-    box-shadow: rgb(202, 28, 225) 0px 4px 10px;
-    /* Box shadow on hover */
+  transform: scale(1.05);
+  box-shadow: rgb(202, 28, 225) 0px 4px 10px;
+  /* Box shadow on hover */
 }
 
 .photo-album-container {
-    margin: 20px;
-    /* Adjust the margin as needed */
+  margin: 20px;
+  /* Adjust the margin as needed */
 }
-
 
 /* Add these styles to your gal.css */
 
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    cursor: pointer;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
 }
 
 .gallery-container {
@@ -119,10 +114,10 @@ h1#orange-pink {
 
 .gallery-title {
   text-align: center;
-  color: #7DFFE4;
+  color: #7dffe4;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .tabs-container {
@@ -136,12 +131,12 @@ h1#orange-pink {
 .tab-button {
   padding: 0.8rem 1.5rem;
   background: rgba(91, 143, 129, 0.2);
-  border: 1px solid #5B8F81;
+  border: 1px solid #5b8f81;
   color: #fff;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .tab-button:hover {
@@ -150,7 +145,7 @@ h1#orange-pink {
 }
 
 .tab-button.active {
-  background: #5B8F81;
+  background: #5b8f81;
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(91, 143, 129, 0.3);
@@ -158,11 +153,11 @@ h1#orange-pink {
 
 .tab-button.home-tab {
   background: rgba(91, 143, 129, 0.3);
-  border: 2px solid #7DFFE4;
+  border: 2px solid #7dffe4;
 }
 
 .tab-button.home-tab:hover {
-  background: #5B8F81;
+  background: #5b8f81;
   transform: translateY(-2px);
 }
 
@@ -206,12 +201,25 @@ h1#orange-pink {
   transform: scale(1.05);
 }
 
+/* Red shadow for aftermovie thumbnails */
+.image-card.red-shadow {
+  border-color: rgba(255, 77, 77, 0.6);
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.4);
+  cursor: pointer;
+}
+
+.image-card.red-shadow:hover {
+  box-shadow: 0 6px 20px rgba(255, 77, 77, 0.6);
+  border-color: rgba(255, 77, 77, 0.8);
+}
+
+
 .loading-spinner {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 200px;
-  color: #7DFFE4;
+  color: #7dffe4;
   font-size: 1.2rem;
 }
 
@@ -279,3 +287,48 @@ h1#orange-pink {
   color: transparent; /* Ensure text is transparent to show gradient */
 }
 
+/* Gallery Section Headers */
+.gallery-section-header {
+  width: 100%;
+  padding: 1.5rem 0;
+  margin: 1rem 0;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(91, 143, 129, 0.1) 0%,
+    rgba(91, 143, 129, 0.3) 50%,
+    rgba(91, 143, 129, 0.1) 100%
+  );
+  border-radius: 8px;
+  border-top: 2px solid rgba(125, 255, 228, 0.3);
+  border-bottom: 2px solid rgba(125, 255, 228, 0.3);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(98.84deg, #7dffe4 43.27%, #5b8f81 71.84%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .gallery-section-header {
+    padding: 1rem 0;
+  }
+}
